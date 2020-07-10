@@ -22,7 +22,7 @@ before_script:
 coverage:
     stage: test
     script:
-        - ./vendor/bin/simple-phpunit --coverage-text
+        - ./vendor/bin/simple-phpunit --coverage-text --colors=never
 
 phpcs:
     stage: test
