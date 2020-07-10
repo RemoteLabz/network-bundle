@@ -81,7 +81,9 @@ class IP
     public function getBinaryAddr(): array
     {
         $addr = explode(".", $this->addr);
-        $bytes = array_map(function ($byte) { return sprintf("%08d", decbin($byte)); }, $addr);
+        $bytes = array_map(function ($byte) {
+            return sprintf("%08d", decbin($byte));
+        }, $addr);
         return $bytes;
     }
 

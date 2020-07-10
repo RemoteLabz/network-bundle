@@ -43,8 +43,9 @@ class Network
 
     public function getIp(): ?IP
     {
-        if (is_string($this->ip))
+        if (is_string($this->ip)) {
             return new IP($this->ip);
+        }
 
         return $this->ip;
     }
@@ -58,8 +59,9 @@ class Network
 
     public function getNetmask(): ?IP
     {
-        if (is_string($this->netmask))
+        if (is_string($this->netmask)) {
             return new IP($this->netmask);
+        }
 
         return $this->netmask;
     }
@@ -147,14 +149,16 @@ class Network
      */
     public function split($moveTo)
     {
-        if (!$moveTo->isNetmask())
+        if (!$moveTo->isNetmask()) {
             throw new BadNetmaskException();
+        }
 
         $moveToNetwork = new Network($this->getIp(), $moveTo);
         $diff = $moveToNetwork->getCidrNetmask() - $this->getCidrNetmask();
 
-        if ($diff <= 0)
+        if ($diff <= 0) {
             throw new BadNetmaskException();
+        }
 
         $splitCount = pow(2, $diff);
         $split = [];

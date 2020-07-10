@@ -9,7 +9,7 @@ cache:
   
 before_script:
     - apt-get update -yqq
-    - apt-get install git wget -yqq
+    - apt-get install git wget zip unzip -yqq
     # Install composer dependencies
     - wget https://composer.github.io/installer.sig -O - -q | tr -d '\n' > installer.sig
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
@@ -26,4 +26,4 @@ coverage:
 phpcs:
     stage: test
     script:
-        - ./vendor/bin/phpcs --standard=PSR2 ./Entity/ ./Tests/
+        - ./vendor/bin/phpcs --standard=PSR2 --exclude=Generic.Files.LineLength ./Entity/ ./Tests/
