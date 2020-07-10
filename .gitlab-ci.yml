@@ -9,7 +9,7 @@ cache:
   
 before_script:
     - apt-get update -yqq
-    - apt-get install git -yqq
+    - apt-get install git wget -yqq
     # Install composer dependencies
     - wget https://composer.github.io/installer.sig -O - -q | tr -d '\n' > installer.sig
     - php -r "copy('https://getcomposer.org/installer', 'composer-setup.php');"
