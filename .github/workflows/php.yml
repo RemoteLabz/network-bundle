@@ -43,10 +43,14 @@ jobs:
           restore-keys: |
             ${{ runner.os }}-php-
 
+      - name: Install dependencies
+        if: steps.composer-cache.outputs.cache-hit != 'true'
+        run: composer install --prefer-dist --no-progress --no-suggest
+
       - name: Run test suite
         run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
 
-      - name: Codecov
+      - name: Upload results to Codecov
         uses: codecov/codecov-action@v1.0.10
         with:
           name: Network Bundle Coverage Report
