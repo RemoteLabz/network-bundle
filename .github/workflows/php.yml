@@ -1,4 +1,4 @@
-name: PHP Composer
+name: PHPUnit
 
 on:
   push:
@@ -30,8 +30,14 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    # Add a test script to composer.json, for instance: "test": "vendor/bin/phpunit"
-    # Docs: https://getcomposer.org/doc/articles/scripts.md
-
     - name: Run test suite
-      run: ./vendor/bin/simple-phpunit --coverage-text --colors=never
+      run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
+
+    - name: Codecov
+      uses: codecov/codecov-action@v1.0.10
+      with:
+        name: Network Bundle Coverage Report
+        file: coverage.xml
+        flags: unittests
+        env_vars: PHP
+        fail_ci_if_error: false
