@@ -22,9 +22,9 @@ jobs:
       uses: actions/cache@v2
       with:
         path: vendor
-        key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+        key: ${{ runner.os }}-php1-${{ hashFiles('**/composer.lock') }}
         restore-keys: |
-          ${{ runner.os }}-php-
+          ${{ runner.os }}-php1-
 
     - name: Install dependencies
       if: steps.composer-cache.outputs.cache-hit != 'true'
@@ -39,9 +39,9 @@ jobs:
         uses: actions/cache@v2
         with:
           path: vendor
-          key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
+          key: ${{ runner.os }}-php1-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
-            ${{ runner.os }}-php-
+            ${{ runner.os }}-php1-
 
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
