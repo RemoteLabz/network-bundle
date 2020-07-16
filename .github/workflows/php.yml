@@ -45,10 +45,10 @@ jobs:
 
       - name: Install dependencies
         if: steps.composer-cache.outputs.cache-hit != 'true'
-        run: composer install --prefer-dist --no-progress --no-suggest
+        run: composer install --dev --no-progress --no-suggest
 
       - name: Run test suite
-        run: ./bin/phpunit --coverage-clover coverage.xml --colors=never
+        run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
 
       - name: Upload results to Codecov
         uses: codecov/codecov-action@v1.0.10
