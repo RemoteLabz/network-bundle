@@ -30,14 +30,17 @@ jobs:
       if: steps.composer-cache.outputs.cache-hit != 'true'
       run: composer install --prefer-dist --no-progress --no-suggest
 
-    - name: Run test suite
-      run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Run test suite
+        run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
 
-    - name: Codecov
-      uses: codecov/codecov-action@v1.0.10
-      with:
-        name: Network Bundle Coverage Report
-        file: coverage.xml
-        flags: unittests
-        env_vars: PHP
-        fail_ci_if_error: false
+      - name: Codecov
+        uses: codecov/codecov-action@v1.0.10
+        with:
+          name: Network Bundle Coverage Report
+          file: coverage.xml
+          flags: unittests
+          env_vars: PHP
+          fail_ci_if_error: false
