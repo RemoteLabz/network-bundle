@@ -1,6 +1,6 @@
 <?php
 
-namespace Remotelabz\NetworkBundle\Exception\Network;
+namespace Remotelabz\NetworkBundle\Exception;
 
 use Exception;
 
