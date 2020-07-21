@@ -1,10 +1,6 @@
 name: PHPUnit
 
-on:
-  push:
-    branches: [ master, add-github-actions ]
-  pull_request:
-    branches: [ master, add-github-actions ]
+on: [push]
 
 jobs:
   build:
