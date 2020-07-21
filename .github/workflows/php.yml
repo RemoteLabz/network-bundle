@@ -34,7 +34,9 @@ jobs:
     needs: [build]
     runs-on: ubuntu-latest
     steps:
-      - name: Cache Composer packages
+      - uses: actions/checkout@v2
+
+      - name: Load Composer Cache
         id: composer-cache
         uses: actions/cache@v2
         with:
