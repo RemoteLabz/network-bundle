@@ -1,5 +1,7 @@
 # NetworkBundle
 
+![GitHub Workflow Status (branch)](https://img.shields.io/github/workflow/status/crestic-urca/network-bundle/Tests/master) [![codecov](https://img.shields.io/codecov/c/github/crestic-urca/network-bundle)](https://codecov.io/gh/crestic-urca/network-bundle)
+
 NetworkBundle is a bundle used by RemoteLabz to handle all IP and network related aspects.
 
 Installation
