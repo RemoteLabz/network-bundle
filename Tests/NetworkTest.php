@@ -168,7 +168,12 @@ class NetworkTest extends TestCase
 
         $this->expectException(BadNetmaskException::class);
 
-        $network->split(new IP("255.255.255.0"));
+        $network->split(new IP("192.168.1.1"));
+    }
+
+    public function testSplitNoDiffException()
+    {
+        $network = new Network("10.0.0.0", "255.0.0.0");
 
         $this->expectException(BadNetmaskException::class);
 
