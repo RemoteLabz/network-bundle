@@ -2,12 +2,39 @@
 
 namespace Remotelabz\NetworkBundle\Tests;
 
+use PHPUnit\Framework\TestCase;
 use Remotelabz\NetworkBundle\Entity\IP;
 use Remotelabz\NetworkBundle\Entity\Network;
-use PHPUnit\Framework\TestCase;
+use Remotelabz\NetworkBundle\Exception\BadNetmaskException;
 
 class NetworkTest extends TestCase
 {
+    public function testGetId()
+    {
+        $network = new Network("10.0.0.0", "255.0.0.0");
+        $this->assertEquals(null, $network->getId());
+    }
+
+    public function testSetIp()
+    {
+        $network = new Network("10.0.0.0", "255.0.0.0");
+
+        $expected = new IP("127.0.0.30");
+
+        $network->setIp($expected);
+        $this->assertEquals($expected, $network->getIp());
+    }
+
+    public function testSetNetmask()
+    {
+        $network = new Network("10.0.0.0", "255.0.0.0");
+
+        $expected = new IP("255.255.255.0");
+
+        $network->setNetmask($expected);
+        $this->assertEquals($expected, $network->getNetmask());
+    }
+
     public function testGetFirstIP()
     {
         $network = new Network("127.0.0.16", "255.255.255.240");
@@ -133,5 +160,18 @@ class NetworkTest extends TestCase
 
         $split = $network->split(new IP("255.255.255.0"));
         $this->assertEquals($split, $expected);
+    }
+
+    public function testSplitBadNetmaskException()
+    {
+        $network = new Network("10.0.0.0", "255.0.0.0");
+
+        $this->expectException(BadNetmaskException::class);
+
+        $network->split(new IP("255.255.255.0"));
+
+        $this->expectException(BadNetmaskException::class);
+
+        $network->split(new IP("255.0.0.0"));
     }
 }

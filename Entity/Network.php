@@ -19,13 +19,13 @@ class Network
     private $id;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Embedded(class="IP")
      * @Serializer\Groups({"lab", "start_lab", "stop_lab"})
      */
     private $ip;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Embedded(class="IP")
      * @Serializer\Groups({"lab", "start_lab", "stop_lab"})
      */
     private $netmask;
@@ -43,10 +43,6 @@ class Network
 
     public function getIp(): ?IP
     {
-        if (is_string($this->ip)) {
-            return new IP($this->ip);
-        }
-
         return $this->ip;
     }
 
@@ -59,10 +55,6 @@ class Network
 
     public function getNetmask(): ?IP
     {
-        if (is_string($this->netmask)) {
-            return new IP($this->netmask);
-        }
-
         return $this->netmask;
     }
 
@@ -108,7 +100,7 @@ class Network
      *
      * @return IP[]
      */
-    public function getAllIp($excluded = null)
+    public function getAllIp(?array $excluded = null)
     {
         $range = [];
         $first = ip2long($this->getFirstAddress());
@@ -133,7 +125,7 @@ class Network
      *
      * @return int
      */
-    public function count($hostsOnly = true): int
+    public function count(bool $hostsOnly = true): int
     {
         $count = (1 << (32 - $this->getCidrNetmask()));
 
@@ -147,7 +139,7 @@ class Network
      *
      * @return Network[]
      */
-    public function split($moveTo)
+    public function split(IP $moveTo)
     {
         if (!$moveTo->isNetmask()) {
             throw new BadNetmaskException();

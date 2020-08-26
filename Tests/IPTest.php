@@ -12,14 +12,8 @@ class IPTest extends TestCase
     public function testConstruct()
     {
         $this->expectException(InvalidArgumentException::class);
-        
-        $ip = new IP("not an ip");
-    }
 
-    public function testGetId()
-    {
-        $ip = new IP("10.0.0.0");
-        $this->assertEquals(null, $ip->getId());
+        $ip = new IP("not an ip");
     }
 
     public function testSetAddr()
