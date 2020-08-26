@@ -18,7 +18,7 @@ class IP
     /**
      * Long representation of addr (for database index purposes)
      *
-     * @ORM\Column(name="_long", type="integer")
+     * @ORM\Column(name="_long", type="bigint")
      */
     private $long;
 
@@ -47,7 +47,7 @@ class IP
     /** Returns a long representation of IP (equivalent to ip2long($ip)) */
     public function getLong(): int
     {
-        return $this->long;
+        return (int) $this->long;
     }
 
     public function __toString()
