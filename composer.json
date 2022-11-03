@@ -1,5 +1,5 @@
 {
-    "name": "crestic-urca/network-bundle",
+    "name": "remotelabz/network-bundle",
     "description": "NetworkBundle is a bundle used by RemoteLabz to handle all IP and network related aspects.",
     "type": "symfony-bundle",
     "require": {
