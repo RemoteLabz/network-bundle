@@ -1,9 +1,9 @@
 <?php
 
-namespace RemoteLabz\NetworkBundle;
+namespace Remotelabz\NetworkBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
-class RemoteLabzNetworkBundle extends Bundle
+class RemotelabzNetworkBundle extends Bundle
 {
 }
