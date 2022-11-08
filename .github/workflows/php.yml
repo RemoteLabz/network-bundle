@@ -55,7 +55,6 @@ phpunit:
           env_vars: PHP
           fail_ci_if_error: false
 
-
   phpcs:
     needs: [build]
     runs-on: ubuntu-latest
