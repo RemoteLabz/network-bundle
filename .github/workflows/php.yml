@@ -34,11 +34,12 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v2
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
 
-      - name: Validate composer.json and composer.lock
-      run: composer validate
-
-      - name: Cache Composer packages
+      - name: Load Composer Cache
         id: composer-cache
         uses: actions/cache@v2
         with:
@@ -46,10 +47,6 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
-      - name: Setup PHP version
-        uses: shivammathur/setup-php@v2
-        with:
-          php-version: '7.4'
 
       - name: Run test suite
         run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
