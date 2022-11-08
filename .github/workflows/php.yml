@@ -35,7 +35,10 @@ jobs:
     steps:
       - uses: actions/checkout@v2
 
-      - name: Load Composer Cache
+      - name: Validate composer.json and composer.lock
+      run: composer validate
+
+      - name: Cache Composer packages
         id: composer-cache
         uses: actions/cache@v2
         with:
@@ -43,6 +46,10 @@ jobs:
           key: ${{ runner.os }}-php-${{ hashFiles('**/composer.lock') }}
           restore-keys: |
             ${{ runner.os }}-php-
+      - name: Setup PHP version
+        uses: shivammathur/setup-php@v2
+        with:
+          php-version: '7.4'
 
       - name: Run test suite
         run: ./vendor/bin/simple-phpunit --coverage-clover coverage.xml --colors=never
