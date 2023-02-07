@@ -1,10 +1,10 @@
 <?php
 
-namespace Remotelabz\NetworkBundle\Entity;
+namespace remotelabz\NetworkBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 use JMS\Serializer\Annotation as Serializer;
-use Remotelabz\NetworkBundle\Exception\BadNetmaskException;
+use remotelabz\NetworkBundle\Exception\BadNetmaskException;
 
 /**
  * @ORM\Entity(repositoryClass="App\Repository\NetworkRepository")

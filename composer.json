@@ -15,7 +15,7 @@
     "license": "MIT",
     "autoload": {
         "psr-4": {
-            "Remotelabz\\NetworkBundle\\": ""
+            "remotelabz\\NetworkBundle\\": ""
         },
         "exclude-from-classmap": [
             "Resources/",

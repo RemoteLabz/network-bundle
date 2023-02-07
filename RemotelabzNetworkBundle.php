@@ -1,6 +1,6 @@
 <?php
 
-namespace Remotelabz\NetworkBundle;
+namespace remotelabz\NetworkBundle;
 
 use Symfony\Component\HttpKernel\Bundle\Bundle;
 
