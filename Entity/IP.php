@@ -1,6 +1,6 @@
 <?php
 
-namespace remotelabz\NetworkBundle\Entity;
+namespace Remotelabz\NetworkBundle\Entity;
 
 use InvalidArgumentException;
 use Doctrine\ORM\Mapping as ORM;
